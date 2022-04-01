@@ -30,7 +30,9 @@ namespace Yousif_Project
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //IdentityUser
-            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<IdentityUser,IdentityRole>().AddDefaultUI()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
+
             //Service for SESSION 10 Mints
             services.AddHttpContextAccessor();
             services.AddSession(Options =>
