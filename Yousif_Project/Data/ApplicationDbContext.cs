@@ -1,9 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Yousif_Project.Models;
 
 namespace Yousif_Project.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> opstions) : base(opstions)
         {
@@ -15,5 +16,7 @@ namespace Yousif_Project.Data
         public DbSet<ApplicationType> ApplicationType { get; set; }
 
         public DbSet<Product> Product { get; set; }
+
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
     }
 }

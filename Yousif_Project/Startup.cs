@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,7 +29,8 @@ namespace Yousif_Project
             //Connection DataBase
             services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            //IdentityUser
+            services.AddDefaultIdentity<IdentityUser>().AddEntityFrameworkStores<ApplicationDbContext>();
             //Service for SESSION 10 Mints
             services.AddHttpContextAccessor();
             services.AddSession(Options =>
@@ -58,12 +60,17 @@ namespace Yousif_Project
             app.UseStaticFiles();
 
             app.UseRouting();
+            //Identity User
 
+            app.UseAuthentication();
+
+            //Authoriztion for Normal
             app.UseAuthorization();
             //Use Session
             app.UseSession();
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
