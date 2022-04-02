@@ -44,7 +44,7 @@ namespace Yousif_Project.Utility
       {
        "From",
        new JObject {
-        {"Email", "yousifall98@hotmail.com"},
+        {"Email", "yousiftalaq1998@gmail.com"},
         {"Name", "yousif"}
        }
       }, {
