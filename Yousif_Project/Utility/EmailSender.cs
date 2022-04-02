@@ -7,12 +7,19 @@ using System.Threading.Tasks;
 
 namespace Yousif_Project.Utility
 {
+
     public class EmailSender : IEmailSender
     {
+
         private readonly IConfiguration _configuration;
 
         public MailJetSettings _mailJetSettings { set; get; }
 
+
+        public EmailSender(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
@@ -29,7 +36,7 @@ namespace Yousif_Project.Utility
                 // BaseAdress = "https://api.us.mailjet.com",
             };
             MailjetRequest request = new MailjetRequest
-            { 
+            {
                 Resource = Send.Resource,
             }
              .Property(Send.Messages, new JArray {
@@ -64,6 +71,7 @@ namespace Yousif_Project.Utility
              });
             await client.PostAsync(request);
         }
+
     }
-  }
+}
 
