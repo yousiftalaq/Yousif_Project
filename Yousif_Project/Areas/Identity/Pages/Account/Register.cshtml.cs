@@ -99,7 +99,7 @@ namespace Yousif_Project.Areas.Identity.Pages.Account
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
-                    if (User.IsInRole(WC.AdminRole))
+                 if (User.IsInRole(WC.AdminRole))
                     {
                         //an admin has logged in and they try to create a new user
                         TempData["success"] = "Create Admin user successflly";
@@ -107,10 +107,10 @@ namespace Yousif_Project.Areas.Identity.Pages.Account
                     }
                     else
                     {
-                        TempData["success"] = "Create Customer user successflly";
-                        await _userManager.AddToRoleAsync(user, WC.CustomerRole);
+                    TempData["success"] = "Create Customer user successflly";
+                    await _userManager.AddToRoleAsync(user, WC.CustomerRole);
                     }
-                    _logger.LogInformation("User created a new account with password.");
+                _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
