@@ -8,7 +8,7 @@ namespace Yousif_Project.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> opstions) : base(opstions)
         {
-
+            //Start .Net Core Course 2
         }
 
         public DbSet<Category> Category { get; set; }
