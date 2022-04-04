@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Yousif_Project.Data;
 
-[assembly: HostingStartup(typeof(Yousif_Project.Areas.Identity.IdentityHostingStartup))]
-namespace Yousif_Project.Areas.Identity
+
+[assembly: HostingStartup(typeof(Yousif_Models.Areas.Identity.IdentityHostingStartup))]
+namespace Yousif_Models.Areas.Identity
 {
     public class IdentityHostingStartup : IHostingStartup
     {

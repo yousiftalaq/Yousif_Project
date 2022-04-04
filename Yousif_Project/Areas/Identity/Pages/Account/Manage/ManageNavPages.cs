@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Yousif_Project.Areas.Identity.Pages.Account.Manage
+namespace Yousif_Models.Areas.Identity.Pages.Account.Manage
 {
     public static class ManageNavPages
     {

@@ -7,12 +7,13 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Yousif_Project.Data;
-using Yousif_Project.Models;
-using Yousif_Project.Models.ViewModels;
-using Yousif_Project.Utility;
+using Yousif_Models.Models;
+using Yousif_Models.Models.ViewModels;
+using Yousif_Utility;
+using Yousif_Utility.Utility;
+using Yousif_DataAccess.Data;
 
-namespace Yousif_Project.Controllers
+namespace Yousif_Models.Controllers
 {
     public class HomeController : Controller
     {

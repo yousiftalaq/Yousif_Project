@@ -1,7 +1,7 @@
 ﻿@page
 @model RegisterModel
 
-@if (User.IsInRole(Yousif_Project.WC.AdminRole))
+@if (User.IsInRole(Yousif_Utility.WC.AdminRole))
 {
 
 
@@ -44,7 +44,7 @@ else
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
 
-            @if (User.IsInRole(Yousif_Project.WC.AdminRole))
+            @if (User.IsInRole(Yousif_Utility.WC.AdminRole))
             {
 
 

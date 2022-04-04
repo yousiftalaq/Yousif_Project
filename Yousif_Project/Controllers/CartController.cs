@@ -9,12 +9,15 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using Yousif_Project.Data;
-using Yousif_Project.Models;
-using Yousif_Project.Models.ViewModels;
-using Yousif_Project.Utility;
+using Yousif_Models.Models;
+using Yousif_Models.Models.ViewModels;
 
-namespace Yousif_Project.Controllers
+
+using Yousif_Utility;
+using Yousif_Utility.Utility;
+using Yousif_DataAccess.Data;
+
+namespace Yousif_Models.Controllers
 {
     [Authorize]
     public class CartController : Controller

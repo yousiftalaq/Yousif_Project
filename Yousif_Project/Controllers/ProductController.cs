@@ -7,11 +7,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Yousif_Project.Data;
-using Yousif_Project.Models;
-using Yousif_Project.Models.ViewModels;
+using Yousif_DataAccess.Data;
+using Yousif_Models.Models;
+using Yousif_Models.Models.ViewModels;
 
-namespace Yousif_Project.Controllers
+using Yousif_Utility;
+
+namespace Yousif_Models.Controllers
 {
     [Authorize(Roles = WC.AdminRole)]
     public class ProductController : Controller

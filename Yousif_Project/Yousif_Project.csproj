@@ -19,4 +19,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Yousif_DataAccess\Yousif_DataAccess.csproj" />
+    <ProjectReference Include="..\Yousif_Models\Yousif_Models.csproj" />
+    <ProjectReference Include="..\Yousif_Utility\Yousif_Utility.csproj" />
+  </ItemGroup>
+
 </Project>

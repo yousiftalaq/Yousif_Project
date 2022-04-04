@@ -11,10 +11,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Yousif_Project.Data;
-using Yousif_Project.Utility;
+using Yousif_DataAccess.Data;
+using Yousif_Utility.Utility;
 
-namespace Yousif_Project
+namespace Yousif_Models
 {
     public class Startup
     {

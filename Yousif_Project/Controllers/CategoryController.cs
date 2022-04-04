@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using Yousif_Project.Data;
-using Yousif_Project.Models;
+using Yousif_Models.Models;
+using Yousif_Utility;
+using Yousif_DataAccess.Data;
 
-namespace Yousif_Project.Controllers
+namespace Yousif_Models.Controllers
 {
     [Authorize(Roles = WC.AdminRole)]
     public class CategoryController : Controller

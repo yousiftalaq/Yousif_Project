@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace Yousif_Project.Areas.Identity.Pages.Account.Manage
+namespace Yousif_Models.Areas.Identity.Pages.Account.Manage
 {
     public class EnableAuthenticatorModel : PageModel
     {
@@ -148,7 +148,7 @@ namespace Yousif_Project.Areas.Identity.Pages.Account.Manage
         {
             return string.Format(
                 AuthenticatorUriFormat,
-                _urlEncoder.Encode("Yousif_Project"),
+                _urlEncoder.Encode("Yousif_Models"),
                 _urlEncoder.Encode(email),
                 unformattedKey);
         }
