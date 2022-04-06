@@ -49,6 +49,12 @@ namespace Yousif_Models
             // Category Repository
             services.AddScoped<ICategoryRepository, CategoryRepository>();
 
+            // ApplicationType Repository
+            services.AddScoped<IApplicationTypeRepository, ApplicationTypeRepository>();
+
+            // Product Repository
+            services.AddScoped<IProductRepository, ProductRepository>();
+
             //Maiject API Email
             services.AddTransient<IEmailSender, EmailSender>();
 

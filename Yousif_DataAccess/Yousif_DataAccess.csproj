@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Yousif_Models\Yousif_Models.csproj" />
+    <ProjectReference Include="..\Yousif_Utility\Yousif_Utility.csproj" />
   </ItemGroup>
 
 </Project>
