@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Yousif_DataAccess.Data;
+using Yousif_DataAccess.Repository;
+using Yousif_DataAccess.Repository.IRepository;
 using Yousif_Utility.Utility;
 
 namespace Yousif_Models
@@ -44,6 +46,8 @@ namespace Yousif_Models
                 Options.Cookie.HttpOnly = true;
                 Options.Cookie.IsEssential = true;
             });
+            // Category Repository
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
 
             //Maiject API Email
             services.AddTransient<IEmailSender, EmailSender>();
