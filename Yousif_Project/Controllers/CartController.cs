@@ -17,6 +17,7 @@ using Yousif_Utility;
 using Yousif_Utility.Utility;
 using Yousif_DataAccess.Data;
 using Yousif_DataAccess.Repository.IRepository;
+using System;
 
 namespace Yousif_Models.Controllers
 {
@@ -115,6 +116,13 @@ namespace Yousif_Models.Controllers
         [ActionName("Summary")]
         public async Task<IActionResult> SummaryPost(ProductUserVM ProductUserVM)
         {
+
+
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claims = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+
+
             var PathToTemplate = _webHostEnvironment.WebRootPath + Path.DirectorySeparatorChar.ToString()
                 + "templates" + Path.DirectorySeparatorChar.ToString()
                 + "Inquiry.html";
@@ -145,7 +153,29 @@ namespace Yousif_Models.Controllers
 
             await _emailSender.SendEmailAsync(WC.EmailAdmin,subject,messageBody);
 
+            InquiryHeader inquiryHeader = new InquiryHeader()
+            {
+                ApplicationUserId = claims.Value,
+                FullName = ProductUserVM.ApplicationUser.FullName,
+                Email = ProductUserVM.ApplicationUser.Email,
+                PhoneNumber = ProductUserVM.ApplicationUser.PhoneNumber,
+                InquiryDate = DateTime.Now
+            };
 
+            _inqHRepo.Add(inquiryHeader);
+            _inqHRepo.Save();
+
+            foreach(var prod in ProductUserVM.ProductList)
+            {
+                InquiryDetail inquiryDetail = new InquiryDetail()
+                {
+                    InquiryHeaderId = inquiryHeader.Id,
+                    ProductId = prod.Id
+                };
+                _inqDRepo.Add(inquiryDetail);
+               
+            }
+            _inqDRepo.Save();
             return RedirectToAction(nameof(InquiryConfirmation));
         }
 
