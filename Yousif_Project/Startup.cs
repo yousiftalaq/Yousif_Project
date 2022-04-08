@@ -55,6 +55,12 @@ namespace Yousif_Models
             // Product Repository
             services.AddScoped<IProductRepository, ProductRepository>();
 
+            // Inquiry Header Repository
+            services.AddScoped<IInquiryHeaderRepository, InquiryHeaderRepository>();
+
+            // Inquiry Detail Repository
+            services.AddScoped<IInquiryDetailRepository, InquiryDetailRepository>();
+
             //Maiject API Email
             services.AddTransient<IEmailSender, EmailSender>();
 
