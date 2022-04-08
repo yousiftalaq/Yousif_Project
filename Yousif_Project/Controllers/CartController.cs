@@ -16,15 +16,16 @@ using Yousif_Models.Models.ViewModels;
 using Yousif_Utility;
 using Yousif_Utility.Utility;
 using Yousif_DataAccess.Data;
+using Yousif_DataAccess.Repository.IRepository;
 
 namespace Yousif_Models.Controllers
 {
     [Authorize]
     public class CartController : Controller
     {
-        private readonly ApplicationDbContext _db;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IEmailSender _emailSender;
+        private readonly IProductRepository _prodRepo;
 
         [BindProperty]
         private ProductUserVM ProductUserVM { get; set; }
