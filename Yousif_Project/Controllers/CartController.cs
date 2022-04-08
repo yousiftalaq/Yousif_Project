@@ -26,13 +26,20 @@ namespace Yousif_Models.Controllers
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IEmailSender _emailSender;
         private readonly IProductRepository _prodRepo;
+        private readonly IApplicationUserRepository _userRepo;
+        private readonly IInquiryHeaderRepository _inqHRepo;
+        private readonly IInquiryDetailRepository _inqDRepo;
 
         [BindProperty]
         private ProductUserVM ProductUserVM { get; set; }
 
-        public CartController(ApplicationDbContext db , IWebHostEnvironment webHostEnvironment , IEmailSender emailSender)
+        public CartController(IProductRepository prodRepo , IApplicationUserRepository userRepo , IInquiryHeaderRepository inqHRepo,
+           IInquiryDetailRepository inqDRepo , IWebHostEnvironment webHostEnvironment , IEmailSender emailSender)
         {
-            _db = db;
+            _prodRepo = prodRepo;
+            _userRepo = userRepo;
+            _inqHRepo = inqHRepo;
+            _inqDRepo = inqDRepo;
             _webHostEnvironment = webHostEnvironment;
             _emailSender = emailSender;
         }
@@ -48,7 +55,7 @@ namespace Yousif_Models.Controllers
             }
 
             List<int> prodInCart = shoppingCartList.Select(i=>i.ProductId).ToList();
-            IEnumerable<Product> prodList = _db.Product.Where(u => prodInCart.Contains(u.Id));
+            IEnumerable<Product> prodList = _prodRepo.GetAll(u => prodInCart.Contains(u.Id));
 
             return View(prodList);
         }
@@ -93,11 +100,11 @@ namespace Yousif_Models.Controllers
             }
 
             List<int> prodInCart = shoppingCartList.Select(i => i.ProductId).ToList();
-            IEnumerable<Product> prodList = _db.Product.Where(u => prodInCart.Contains(u.Id));
+            IEnumerable<Product> prodList = _prodRepo.GetAll(u => prodInCart.Contains(u.Id));
 
             ProductUserVM = new ProductUserVM()
             {
-                ApplicationUser = _db.ApplicationUser.FirstOrDefault(u => u.Id == claim.Value),
+                ApplicationUser = _userRepo.FirstOrDefault(u => u.Id == claim.Value),
                 ProductList = prodList.ToList(),
             };
             return View(ProductUserVM);
