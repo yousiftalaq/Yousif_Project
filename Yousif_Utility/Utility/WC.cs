@@ -6,6 +6,8 @@
 
         public const string SessionCart = "ShoppingCartSession";
 
+        public const string SessionInquiryId = "InquirySession";
+
         public const string AdminRole = "Admin";
 
         public const string EmailAdmin = "yousiftalaq1998@gmail.com";
@@ -15,5 +17,9 @@
         public const string CategoryName = "Category";
 
         public const string ApplicationTypeName = "ApplicationType";
+
+        public const string Success = "Success";
+
+        public const string Error = "Error";
     }
 }

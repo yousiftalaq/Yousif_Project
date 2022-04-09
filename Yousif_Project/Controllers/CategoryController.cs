@@ -37,12 +37,12 @@ namespace Yousif_Models.Controllers
             {
                 _catRepo.Add(obj);
                 _catRepo.Save();
+                TempData[WC.Success] = "Category created successfully";
                 return RedirectToAction("Index");
             }
-            else
-            {
-                return View(obj);
-            }
+            TempData[WC.Error] = "Error while creating category";
+            return View(obj);
+            
 
         }
         [HttpGet]
