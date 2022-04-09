@@ -152,7 +152,7 @@ namespace Yousif_Models.Controllers
                     }
                     _prodRepo.Update(productVM.Product);
                 }
-
+                TempData[WC.Success] = "Action completed successfully";
                 _prodRepo.Save();
                 return RedirectToAction("Index");
             }
@@ -197,7 +197,9 @@ namespace Yousif_Models.Controllers
                 System.IO.File.Delete(oldFile);
             }
             _prodRepo.Remove(obj);
-            _prodRepo.Save();;
+            _prodRepo.Save();
+            TempData[WC.Error] = "Action completed successfully";
+
             return RedirectToAction("Index");
         }
 

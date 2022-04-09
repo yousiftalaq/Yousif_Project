@@ -71,6 +71,7 @@ namespace Yousif_Models.Controllers
             {
                 _catRepo.Update(obj);
                 _catRepo.Save();
+                TempData[WC.Success] = "Action completed successfully";
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -100,6 +101,7 @@ namespace Yousif_Models.Controllers
             {
                 return NotFound();
             }
+            TempData[WC.Error] = "Action completed successfully";
             _catRepo.Remove(obj);
             _catRepo.Save();
             return RedirectToAction("Index");

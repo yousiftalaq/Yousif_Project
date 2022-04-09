@@ -85,6 +85,7 @@ namespace Yousif_Models.Controllers
             }
             shoppingCartList.Add(new ShoppingCart { ProductId = id });
             HttpContext.Session.Set(WC.SessionCart,shoppingCartList);
+            TempData[WC.Success] = "Item add to cart successfully";
             return RedirectToAction(nameof(Index));
         }
 
@@ -106,7 +107,7 @@ namespace Yousif_Models.Controllers
             }
        
             HttpContext.Session.Set(WC.SessionCart,shoppingCartList);
-
+            TempData[WC.Error] = "Item removed from cart successfully";
             return RedirectToAction(nameof(Index));
 
         }

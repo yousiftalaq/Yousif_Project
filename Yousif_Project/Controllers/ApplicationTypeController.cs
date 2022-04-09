@@ -39,6 +39,7 @@ namespace Yousif_Models.Controllers
             {
                 _appTypeRepo.Add(obj);
                 _appTypeRepo.Save();
+                TempData[WC.Success] = "Action completed successfully";
                 return RedirectToAction("Index");
             }
             else
@@ -72,6 +73,7 @@ namespace Yousif_Models.Controllers
             }
             _appTypeRepo.Update(obj);
             _appTypeRepo.Save();
+            TempData[WC.Success] = "Action completed successfully";
             return RedirectToAction("Index");
         }
 
@@ -101,7 +103,8 @@ namespace Yousif_Models.Controllers
             }
            _appTypeRepo.Remove(obj);
             _appTypeRepo.Save();
-           return RedirectToAction("Index");
+            TempData[WC.Error] = "Action completed successfully";
+            return RedirectToAction("Index");
         }
 
 
