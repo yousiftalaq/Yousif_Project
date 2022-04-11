@@ -5,6 +5,12 @@ namespace Yousif_Models.Models
 {
     public class Product
     {
+
+        public Product()
+        {
+            TempSqft = 1;
+        }
+
         [Key]
         public int Id { get; set; }
 
@@ -34,6 +40,9 @@ namespace Yousif_Models.Models
         [ForeignKey("ApplicationTypeId")]
         public virtual ApplicationType ApplicationType { get; set; }
 
-         
+        [Range(1,10000)]
+        [NotMapped]
+        public int TempSqft { get; set; }
+
     }
 }
