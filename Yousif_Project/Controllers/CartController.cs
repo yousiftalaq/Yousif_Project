@@ -54,7 +54,7 @@ namespace Yousif_Models.Controllers
                 //session exsits
                 shoppingCartList = HttpContext.Session.Get<List<ShoppingCart>>(WC.SessionCart);
             }
-
+             
             List<int> prodInCart = shoppingCartList.Select(i=>i.ProductId).ToList();
             IEnumerable<Product> prodListTemp = _prodRepo.GetAll(u => prodInCart.Contains(u.Id));
             IList<Product> prodList= new List<Product>();
@@ -176,7 +176,7 @@ namespace Yousif_Models.Controllers
             foreach(var prod in ProductUserVM.ProductList)
             {
                 InquiryDetail inquiryDetail = new InquiryDetail()
-                {
+                { 
                     InquiryHeaderId = inquiryHeader.Id,
                     ProductId = prod.Id
                 };
