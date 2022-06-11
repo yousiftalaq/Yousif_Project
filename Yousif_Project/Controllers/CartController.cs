@@ -192,6 +192,18 @@ namespace Yousif_Models.Controllers
             HttpContext.Session.Clear();
             return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult UpdateCart(IEnumerable<Product> ProdList)
+        {
+            List<ShoppingCart> shoppingCartList = new List<ShoppingCart>();
+            foreach(Product prod in ProdList)
+            {
+                shoppingCartList.Add(new ShoppingCart { ProductId=prod.Id,Sqft=prod.TempSqft});
+            }
+            HttpContext.Session.Set(WC.SessionCart,shoppingCartList);
+            return RedirectToAction(nameof(Index));
+        }
 
 
 
